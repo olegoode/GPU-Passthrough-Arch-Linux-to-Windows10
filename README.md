@@ -156,7 +156,15 @@ Find your GPU and ensure that under “Kernel driver in use:” vfio-pci is disp
 nvram = ["/usr/share/ovmf/ovmf_code_x64.bin:/usr/share/ovmf/ovmf_vars_x64.bin"]
 ```
 
-3. start and enable both libvirtd and its logger, virtlogd.socket in systemd if you use a different init system, substitute it's commands in for systmectl start
+3. Fix EFI not showing up in virt-manager dropdown (libvirt 5.8+ bug)
+
+`sudo rm /usr/share/qemu/firmware/*edk*`
+
+4. Install ebtables and dnsmasq for virtual networks support
+
+`sudo pacman -S ebtables dnsmasq`
+
+4. start and enable both libvirtd and its logger, virtlogd.socket in systemd if you use a different init system, substitute it's commands in for systmectl start
 
 ```
 $ sudo systemctl start libvirtd.service 
