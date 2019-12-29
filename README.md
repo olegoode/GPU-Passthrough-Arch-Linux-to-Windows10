@@ -82,8 +82,8 @@ One of the first things you will want to do is isolate your GPU. The goal of thi
 
 and look through the given output until you find your desired GPU, they're **bold** in this case:
 
->01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GM204 [GeForce GTX 980] **[10de:13c0]** (rev a1)
->01:00.1 Audio device [0403]: NVIDIA Corporation GM204 High Definition Audio Controller **[10de:0fbb]** (rev a1)
+>09:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1)
+>09:00.1 Audio device [0403]: NVIDIA Corporation GP104 High Definition Audio Controller [10de:10f0] (rev a1)
 
 
 ### Configuring vfio-pci and Regenerating your Initramfs
@@ -93,7 +93,7 @@ Next, we need to instruct vfio-pci to target the device in question through the 
 1. edit `/etc/modprobe.d/vfio.conffile` and adding the following line with **your ids from the last step above**:
 
 ```
-options vfio-pci ids=10de:13c0,10de:0fbb
+options vfio-pci ids=10de:1b80,10de:10f0
 ```
 
 Next, we will need to ensure that vfio-pci is loaded before other graphics drivers. 
