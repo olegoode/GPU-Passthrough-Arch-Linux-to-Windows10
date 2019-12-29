@@ -53,12 +53,12 @@ Most of this stuff is in the archlinux guide at the top, read more of that if an
 1. Make sure that you have already enabled IOMMU via AMD-Vi or Intel Vt-d in your motherboard's BIOS 
 HIT F10 or del or whatever the key is for your motherboard during bios initialization at beginning of startup, enable either VT-d if you have an Intel CPU or AMD-vi if you have an AMD CPU
 
-2. edit `/etc/default/grub` and add intel_iommu=on to GRUB_CMDLINE_LINUX_DEFAULT
+2. edit `/etc/default/grub` and add [amd|intel]_iommu=on to GRUB_CMDLINE_LINUX_DEFAULT
 
 `$ sudo nvim /etc/default/grub`
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet [amd|intel]_iommu=on"
 ```
 
 3. re-configure your grub:
